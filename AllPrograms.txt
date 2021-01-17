@@ -1,0 +1,189 @@
+# File-Handling-Program-In-Java
+------------------------------------
+Q. Count how many Capital and Small Letters Present in a File.?
+>>import java.io.FileInputStream;
+import java.io.IOException;
+public class CapitalLettersCount 
+{
+	public static void main(String[] args) throws IOException
+	{
+		int count=0,i=0;
+		FileInputStream fin= new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\src\\FileHandling5.java");
+		int x=fin.read();
+		while(x!=-1)
+		{
+			x=fin.read();
+			if(x>=65 && x<=90)
+			{
+				count++;
+			}
+			else
+				i++;
+		}	
+		System.out.println("Number of Capital Letters Present in File is: "+count);
+		System.out.println("Number of Small Letters Present in File is: "+i);
+		fin.close(); 
+	}
+}
+------------------------------------------------------------------------------------------
+Q.Count How many Vowel and Consonat present in a file.?
+>>import java.io.FileInputStream;
+import java.io.IOException;
+public class CountVowel 
+{
+	public static void main(String[] args) throws IOException
+	{
+		int count=0,i=0;
+	FileInputStream fin= new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\src\\FileHandling5.java");
+	int x=fin.read();
+	while(x!=-1)
+	{
+		x=fin.read();
+		char ch=(char) x;
+		if(ch=='a'||ch=='A'||ch=='e'||ch=='E'||ch=='i'||ch=='I'||ch=='o'||ch=='O'||ch=='u'||ch=='U')
+		count++;
+		else
+			i++;
+	}	
+	System.out.println("Number of Vowel Present in File is: "+count);
+	System.out.println("Number of Consonant Present in File is: "+i);
+	fin.close(); 
+	}
+}
+--------------------------------------------------------------------------------------------------------
+Q. Count how Many characters present in a file.?
+>>import java.io.FileInputStream;
+import java.io.IOException;
+
+public class CountCharacter 
+{
+	public static void main(String[] args) throws IOException
+	{
+	FileInputStream fin= new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\src\\FileHandling5.java");
+	System.out.println(fin.available());
+	System.out.println((char)fin.read());
+	System.out.println(fin.available());
+	fin.skip(0);
+	System.out.println((char)fin.read());
+	fin.close();
+	}
+}
+---------------------------------------------------------------------------------------------------------------------
+Q. Copy the contenet from one File into another File.
+>>import java.io.*;
+public class FileHandling5 extends Thread
+{
+	public static void main(String[] args) throws IOException, InterruptedException
+	{
+		FileInputStream fin= new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\src\\FileHandling1.java");
+		FileOutputStream fout=new FileOutputStream ("E:\\Programming\\FileHandling\\FileOutputStream\\src\\copy.txt");
+		int x=fin.read();
+		while(x!=-1)
+		{
+			fout.write(x);
+			x=fin.read();
+			sleep(100);
+			System.out.print((char)x);
+		}
+		fout.flush();
+		fout.close();
+		fin.close();
+		System.out.println("File Copied.");
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------
+Q. Print How many lines present in the specified file.?
+>>//count number of lines in a file
+import java.io.FileInputStream;
+import java.io.IOException;
+public class FileHandling {
+public static void main(String[] args) throws IOException
+{
+	FileInputStream fin =null;
+	int count=1;
+		fin = new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\src\\FileHandling2.java");
+		int x=fin.read();
+		while(x!=-1)
+		{
+			if(x=='\n')
+				count++;
+			x=fin.read();
+		}
+		fin.close();
+		System.out.println("Number of Lines: "+count);
+}
+}
+----------------------------------------------------------------------------------------------------------------------------------
+Q. How to read content from a file.?
+>>import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileHandling3 
+{
+	public static void main(String[] args) throws IOException
+	{
+		Scanner sc= new Scanner(System.in);
+		FileInputStream fin=null;
+		try {
+			fin= new FileInputStream("E:\\Programming\\FileHandling\\FileOutputStream\\second.txt");
+			int x=fin.read();
+			while(x!=-1)
+			{
+				System.out.print((char)x);
+				x=fin.read();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				fin.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+		System.out.println("Thank you");
+		sc.close();
+	}
+}
+--------------------------------------------------------------------------------------------------------------
+Q. How to write in file.?
+>>import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileHandling1
+{
+	public static void main(String[] args) throws IOException {
+		int x=389895;
+		FileOutputStream fout=null;
+		try {
+			fout=new FileOutputStream("E:\\Programming\\FileHandling\\FileOutputStream\\first.txt");
+			fout.write((x));
+			fout.flush();
+			System.out.println("Successfully Written");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			System.out.println(e);
+		}
+	finally {
+		try {
+			fout.close();
+		} catch (Exception e2) {
+			System.out.println(e2);
+		}
+	}
+		System.out.println("Thank You");
+		
+	}
+}
+
